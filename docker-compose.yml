@@ -1,0 +1,39 @@
+services:
+  db:
+    image: postgres
+    container_name: postgres_db
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=fluxchat
+      - POSTGRES_USER=fluxchat
+      - POSTGRES_DB=fluxchat
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - my_network
+
+#  app:
+#    build: .
+#    environment:
+#      SPRING_PROFILES_ACTIVE: prod
+#      DB_HOST: db
+#      DB_PORT: 5432
+#      DB_NAME: fluxchat
+#      DB_USER: fluxchat
+#      DB_PASSWORD: fluxchat
+#      JWT_SECRET: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+#    ports:
+#       - "5000:5000"
+#    depends_on:
+#      - db
+#    networks:
+#      - my_network
+
+networks:
+  my_network:
+    driver: bridge
+
+volumes:
+  db_data: # Docker-managed volume for database
+    driver: local
