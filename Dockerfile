@@ -14,6 +14,6 @@ FROM openjdk:17
 EXPOSE 5000
 
 # Copy the jar file from the build stage
-COPY --from=build /app/target/fruitexpert-0.0.1-SNAPSHOT.jar /app/app.jar
+COPY --from=build /app/target/flux-chat-0.0.1-SNAPSHOT.jar /app/app.jar
 
 ENTRYPOINT ["java", "-Dspring.profiles.active=${SPRING_PROFILES_ACTIVE}", "-jar", "/app/app.jar"]
